@@ -65,7 +65,6 @@ def remain(candidates, constraints, sample):
                     candidates.remove(con)
     else:
         candidates.remove(sample)
-
     return candidates
 
 
@@ -102,7 +101,7 @@ def read_input(filename):
 def write_output(filename, items_chosen):
     with open(filename, "w") as f:
         for i in items_chosen:
-            f.write("{0}\n".format(i))
+            f.write("{0}\n".format(i[0]))
 
 if __name__ == "__main__":
     # parser = argparse.ArgumentParser(description="PickItems solver.")
