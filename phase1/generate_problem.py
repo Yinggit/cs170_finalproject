@@ -1,17 +1,17 @@
 import argparse
 import numpy as np
 import os
-NUM_MAX = 2**9
-ITEM_MAX = 25000
+NUM_MAX = 100
+ITEM_MAX = 100
 
 def generate_prob():
     price_max = NUM_MAX
     item_max = ITEM_MAX
-    P = round(np.random.sample()* 2**30, 2)
-    M = round(np.random.sample()* 2**30, 2)
-    N = np.random.randint(0, 50000)
+    P = round(np.random.sample()* 1000, 2)
+    M = round(np.random.sample()* 1000, 2)
+    N = np.random.randint(0, 100)
     C = np.random.randint(0, item_max)
-    num_class = N/100
+    num_class = N/2
     item_list = generate_item(P, M, N, num_class)
     constr_list = set(map(lambda x: str(x)[5:-2], generate_constraint(C, num_class)))
     constr_list = map(lambda x: map(int, x.split(', ')), constr_list)
@@ -66,10 +66,10 @@ if __name__ == "__main__":
     generated = 0
     while generated < 3:
         prob = generate_prob()
-        result = write_prob(prob, "instance{}.in".format(generated))
-        file_size = os.path.getsize("instance{}.in".format(generated)) >> 10
+        result = write_prob(prob, "sample_problem{}.in".format(generated))
+        file_size = os.path.getsize("sample_problem{}.in".format(generated)) >> 10
         print "file size: {}KB".format(file_size)
-        if 3500 <= file_size < 4000:
-            generated += 1
+        # if 3500 <= file_size < 4000:
+        generated += 1
 
     import ipdb; ipdb.set_trace()

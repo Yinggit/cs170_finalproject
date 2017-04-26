@@ -29,7 +29,9 @@ def solve(P, M, N, C, items, constraints):
             weight += sample[2]
             print len(shop_list), len(candidates), buget, weight
             candidates = remain(candidates, constraints, sample)
-    return shop_list
+    verify(shop_list, constraints)
+    selected = map(lambda x: x[0], shop_list)
+    return selected
 
 def pre_process(items, N):
     candidates = []
@@ -49,17 +51,28 @@ def select(candidates, S):
     return items[index]
 
 def remain(candidates, constraints, sample):
-    ralevent = [constr for constr in constraints if sample in constr]
-    if sample in ralevent:
-        for constr in ralevent:
-            for con in constr:
-                if con in candidates:
-                    candidates.remove(con)
-    else:
+    ralevent = [constr for constr in constraints if sample[1] in constr]
+    if len(ralevent) == 0:
         candidates.remove(sample)
-
+        return candidates
+    conflict = []
+    for constr in ralevent:
+        conflict.extend(list(constr))
+    conflict = set(conflict)
+    for can in candidates:
+        if can[1] in conflict:
+            candidates.remove(can)
     return candidates
 
+def verify(selected, constraints):
+    for constr in constraints:
+        count = 0
+        for item in selected:
+            if item in constr:
+                count += 1
+        if count > 1:
+            print("Constraint conflict")
+    print("correct")
 
 """
 ===============================================================================
@@ -103,7 +116,7 @@ if __name__ == "__main__":
     # args = parser.parse_args()
     # input_file, output_file = args.input_file, args.output_file
     print "Loading Input Files"
-    for fi in range(21):
+    for fi in range(1):
         input_file, output_file = 'project_instances/problem{}.in'.format(fi+1), 'instance_output1/problem{}.out'.format(fi+1)
         P, M, N, C, items, constraints = read_input(input_file)
         print "Start Solving..."

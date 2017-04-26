@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 from __future__ import division
-from gurobipy import *
+from cvxpy import *
 import numpy as np
 import argparse
 
@@ -17,42 +17,41 @@ def solve(P, M, N, C, items, constraints):
     Return: a list of strings, corresponding to item names.
     """
     resale, cost, weight = [], [], []
+    name = []
     for item in items:
+        name.append(item[0])
         weight.append(item[2])
         cost.append(item[3])
         resale.append(item[4])
 
+    name = np.array(name)
     w = np.array(weight).reshape((N, 1))
-    t = np.array(cost).reshape((N, 1))
+    k = np.array(cost).reshape((N, 1))
     r = np.array(resale).reshape((N, 1))
 
+    x = Variable(N)
+    objective = Maximize(r.T * x)
+    constr=[k.T*x <= M,
+            w.T*x <= P
+           ]
+    print "loading constraints"
+    for cons in constraints:
+        constr_set = 0
+        for c in cons:
+            constr_set += x[c]
+        constr.append(constr_set == 1)
+    prob = Problem(objective, constr)
     import ipdb; ipdb.set_trace()
-    shop_list = []
-    try:
-        # Create a new model
-        m = Model("mip1")
-        # Create variables
-        x = m.addVar(vtype=GRB.BINARY, name="x")
-        y = m.addVar(vtype=GRB.BINARY, name="y")
-        z = m.addVar(vtype=GRB.BINARY, name="z")
-        m.update()
-        # Set objective
-        m.setObjective(x + y + 2 * z, GRB.MAXIMIZE)
-
-        # Add constraint: x + 2 y + 3 z <= 4
-        m.addConstr(x + 2 * y + 3 * z <= 4, "c0")
-
-        # Add constraint: x + y >= 1
-        m.addConstr(x + y >= 1, "c1")
-
-        m.optimize()
-
-        for v in m.getVars():
-            print(v.varName, v.x)
-        print('Obj:', m.objVal)
-    except GurobiError:
-        print('Error reported')
-    return shop_list
+    print "solving problem"
+    prob.solve(solver = SCS)
+    xVar = x.value
+    index = []
+    for i in range(N):
+        if xVar[i] > 0:
+            index.append(i)
+    lists = name[index]
+    import ipdb; ipdb.set_trace()
+    return lists
 
 
 """
@@ -98,8 +97,8 @@ if __name__ == "__main__":
     # args = parser.parse_args()
 
     print "Loading Input Files"
-    for fi in range(1):
-        input_file, output_file = 'project_instances/problem{}.in'.format(fi+1), 'instance_output2/problem{}.out'.format(fi+1)
+    for fi in [-1]:
+        input_file, output_file = 'sample_input/sample_problem{}.in'.format(fi+1), 'sample_input/sample_problem{}.out'.format(fi+1)
         P, M, N, C, items, constraints = read_input(input_file)
         print "Start Solving..."
         items_chosen = solve(P, M, N, C, items, constraints)
