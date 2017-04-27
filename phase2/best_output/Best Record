@@ -1,7 +1,7 @@
 problem1.in: 77496836.17    	->2
-problem2.in: 2000012523.0	->1
-problem3.in: 420291663.09	->2
-problem4.in: 68949.5		->2
+problem2.in: 2000012523.0	->2*
+problem3.in: 420291663.09	->2*
+problem4.in: 68949.5		->2*
 problem5.in: 7.32712730472e+11	->1
 problem6.in: 111441.73		->1
 problem7.in: 2575390383.0	->1
