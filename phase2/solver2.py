@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 from __future__ import division
 from gurobipy import *
+from collections import defaultdict
 import numpy as np
 import argparse
 
@@ -16,24 +17,72 @@ def solve(P, M, N, C, items, constraints):
     Write your amazing algorithm here.
     Return: a list of strings, corresponding to item names.
     """
-    shop_list = []
+    Problem = False
     resale, cost, weight = [], [], []
     name = []
-    for item in items:
+
+    print "Constructing Data"
+    class_bin = defaultdict(list)
+    class_num = set()
+    for i in range(N):
+        item = items[i]
+        class_bin[item[1]].append(i)
+        class_num.add(item[1])
         name.append(item[0])
         weight.append(item[2])
         cost.append(item[3])
         resale.append(item[4])
-
     name = np.array(name)
-    w = np.array(weight).reshape((N, 1))
-    k = np.array(cost).reshape((N, 1))
-    r = np.array(resale).reshape((N, 1))
+    w = np.array(weight)
+    k = np.array(cost)
+    r = np.array(resale)
+    index = range(N)
+    weight_dict = dict(zip(index, w))
+    cost_dict = dict(zip(index, k))
+    resale_dict = dict(zip(index, r))
+    class_num = list(class_num)
+
+    print "Build up models"
     model = Model("Resale_Solver")
+    x = model.addVars(index, vtype=GRB.BINARY, name='list')
+    rep = model.addVars(class_num, vtype=GRB.INTEGER, name='indicator')
+    model.ModelSense = GRB.MAXIMIZE
+    model.setObjective(x.prod(resale_dict) + M - x.prod(cost_dict))
+    model.addConstr(x.prod(cost_dict) <= M, name='cost')
+    model.addConstr(x.prod(weight_dict) <= P, name='weight')
+
+    for clas in class_num:
+        for item in class_bin[clas]:
+            model.addConstr(rep[clas] >= x[item], name='rep({},{})'.format(clas, item))
+
+    for i in range(C):
+        constr = constraints[i]
+        expr = 0
+        for clas in constr:
+            expr += rep[clas]
+        model.addConstr(expr <= 1, name="constr_{}".format(i))
 
 
+    model.setParam(GRB.Param.MIPFocus, 3)
 
-    return shop_list
+    model.write('poolsearch.lp')
+    model.optimize()
+    print "Done Solving, checking solutions"
+    shop_list = np.array([name[i] for i in index if x[i].X > 0.9])
+    # Status checking
+    status = model.Status
+    if status == GRB.Status.INF_OR_UNBD or \
+       status == GRB.Status.INFEASIBLE  or \
+       status == GRB.Status.UNBOUNDED:
+        print('The model cannot be solved because it is infeasible or unbounded')
+        Problem = True
+        # sys.exit(1)
+
+    if status != GRB.Status.OPTIMAL:
+        print('Optimization was stopped with status ' + str(status))
+        Problem = True
+        # sys.exit(1)
+    return shop_list, Problem
 
 
 """
@@ -79,10 +128,13 @@ if __name__ == "__main__":
     # args = parser.parse_args()
 
     print "Loading Input Files"
-    for fi in [-1]:
-        input_file, output_file = 'sample_input/sample_problem{}.in'.format(fi+1), 'sample_input/sample_problem{}.out'.format(fi+1)
+    problems = []
+    for fi in range(21):
+
+        input_file, output_file = 'project_instances/problem{}.in'.format(fi+1), 'instance_output2/problem{}.out'.format(fi+1)
         P, M, N, C, items, constraints = read_input(input_file)
         print "Start Solving..."
-        items_chosen = solve(P, M, N, C, items, constraints)
+        items_chosen, problem = solve(P, M, N, C, items, constraints)
+        problems.append(problem)
         print "Finished Solving, Write to file."
         write_output(output_file, items_chosen)
