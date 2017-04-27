@@ -59,12 +59,13 @@ def solve(P, M, N, C, items, constraints):
         constr = constraints[i]
         expr = 0
         for clas in constr:
-            expr += rep[clas]
+            if clas in class_num:
+                expr += rep[clas]
         model.addConstr(expr <= 1, name="constr_{}".format(i))
 
 
     model.setParam(GRB.Param.MIPFocus, 3)
-
+    model.setParam(GRB.Param.TimeLimit, 3600)
     model.write('poolsearch.lp')
     model.optimize()
     print "Done Solving, checking solutions"
@@ -129,7 +130,7 @@ if __name__ == "__main__":
 
     print "Loading Input Files"
     problems = []
-    for fi in range(21):
+    for fi in range(10, 21):
 
         input_file, output_file = 'project_instances/problem{}.in'.format(fi+1), 'instance_output2/problem{}.out'.format(fi+1)
         P, M, N, C, items, constraints = read_input(input_file)
