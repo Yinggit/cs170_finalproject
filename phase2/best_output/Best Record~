@@ -1,22 +1,28 @@
-problem1.in: 77496836.17    	->2
-problem2.in: 2000012523.0	->1
-problem3.in: 420291663.09	->2
-problem4.in: 68949.5		->2
+problem1.in: 78609047.86    	->2
+problem2.in: 2007478756.63	->2
+problem3.in: 618911222.32	->2
+problem4.in: 80508.55		->2
 problem5.in: 7.32712730472e+11	->1
 problem6.in: 111441.73		->1
 problem7.in: 2575390383.0	->1
-problem8.in: 37697776.79	->1
+problem8.in: 40168904.45	->2
 problem9.in: 10842012711.0	->1
-problem10.in: 885530.07		->2
-problem11.in: 31768762.42	->2
+problem10.in: 1077902.25	->2
+problem11.in: 32061991.37	->2
 
-problem12.in: 4313271204.12	->2
-problem13.in: 73860170.8	->2
+problem12.in: 4316164011.13	->2
+problem13.in: 74798807.85	->2
 problem14.in: 3207546.99	->1
-problem15.in: 125473847.9	->2
-problem16.in: 4325776370.36	->2
+problem15.in: 125856923.8	->2
+problem16.in: 4349657419.98	->2
 problem17.in: 4454006761.62	->1
-problem18.in: 30414415.9	->2
-problem19.in: 1698811.11	->1
+problem18.in: 30449888.11	->2
+problem19.in: 1749962.84	->1
 problem20.in: 41096666.46	->1
 problem21.in: 219762.61		->1
+
+
+mac 1-7 tested
+linux 10-18 tested 
+
+Problem 5, 6, 7, 9
