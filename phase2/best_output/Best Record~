@@ -8,16 +8,16 @@ problem7.in: 10373742848.0	        ->2	*optimal*
 problem8.in: 40168904.45	        ->2	*optimal*
 problem9.in: 15160731425.0	        ->1
 problem10.in: 1077902.25	        ->2	*optimal*
-problem11.in: 32061991.37	        ->2
-problem12.in: 4316164011.13	        ->2
-problem13.in: 74798807.85	        ->2
+problem11.in: 32061991.37	        ->2	gap 3.2804%
+problem12.in: 4316164011.13	        ->2	gap 1.56%
+problem13.in: 74798807.85	        ->2	presolve not finished by 2hr
 problem14.in: 3207546.99	        ->1
 problem15.in: 125856923.8	        ->2
 problem16.in: 4349657419.98	        ->2
 problem17.in: 4454006761.62	        ->1
 problem18.in: 30449888.11	        ->2
-problem19.in: 1749962.84	        ->1
-problem20.in: 41096666.46	        ->1
+problem19.in: 1749962.84	        ->1	gap 94.6912%
+problem20.in: 43648413.71	        ->2	gap 0.8086%
 problem21.in: 219762.61		        ->1
 
 
