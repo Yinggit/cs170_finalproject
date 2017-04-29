@@ -11,7 +11,7 @@ problem10.in: 1077902.25	        ->2	*optimal*
 problem11.in: 32102893.8	        ->2	gap 3.2804%
 problem12.in: 4316164011.13	        ->2	gap 1.56%
 problem13.in: 74798807.85	        ->2	presolve not finished by 2hr
-problem14.in: 3207546.99	        ->1
+problem14.in: 3207546.99	        ->1	presolve not finished by 2hr
 problem15.in: 125856923.8	        ->2
 problem16.in: 4349657419.98	        ->2
 problem17.in: 4454006761.62	        ->1
