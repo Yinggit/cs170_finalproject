@@ -64,9 +64,17 @@ def solve(P, M, N, C, items, constraints):
         model.addConstr(expr <= 1, name="constr_{}".format(i))
 
 
-    model.setParam(GRB.Param.MIPFocus, 3)
-    model.setParam(GRB.Param.TimeLimit, 3600)
+    # model.setParam(GRB.Param.MIPFocus, 3)
+    # Spend 30min in parameter Tuning
+    # model.setParam(GRB.Param.TimeLimit, 1800)
+    # Read in the parameter
+    model.read("tune_param.prm")
+    model.update()
     model.write('poolsearch.lp')
+
+
+
+
     model.optimize()
     print "Done Solving, checking solutions"
     shop_list = np.array([name[i] for i in index if x[i].X > 0.9])
@@ -85,6 +93,13 @@ def solve(P, M, N, C, items, constraints):
         # sys.exit(1)
     return shop_list, Problem
 
+
+def tune(model):
+    print "Tuning Parameter..."
+    model.tune()
+    for i in range(model.tuneResultCount):
+        model.getTuneResult(i)
+        model.write('tune'+str(i)+'.prm')
 
 """
 ===============================================================================
@@ -130,11 +145,11 @@ if __name__ == "__main__":
 
     print "Loading Input Files"
     problems = []
-    for fi in range(10, 21):
+    for fi in [7]:
 
         input_file, output_file = 'project_instances/problem{}.in'.format(fi+1), 'instance_output2/problem{}.out'.format(fi+1)
         P, M, N, C, items, constraints = read_input(input_file)
-        print "Start Solving..."
+        print "Start Solving.git.."
         items_chosen, problem = solve(P, M, N, C, items, constraints)
         problems.append(problem)
         print "Finished Solving, Write to file."
