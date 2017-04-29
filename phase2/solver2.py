@@ -21,7 +21,7 @@ def solve(P, M, N, C, items, constraints, filename):
     resale, cost, weight = [], [], []
     name = []
 
-    print "Constructing Data"
+    print "Constructing Data for {}".format(filename)
     class_bin = defaultdict(list)
     class_num = set()
     for i in range(N):
@@ -56,22 +56,18 @@ def solve(P, M, N, C, items, constraints, filename):
             model.addConstr(rep[clas] >= x[item], name='rep({},{})'.format(clas, item))
 
     for i in range(C):
-        constr = constraints[i]
-        expr = 0
+        constr, expr = constraints[i], 0
+        empty_class = True
         for clas in constr:
             if clas in class_num:
+                empty_class = False
                 expr += rep[clas]
-        model.addConstr(expr <= 1, name="constr_{}".format(i))
-
-    model.read("tune0.prm")
-    # model.setParam(GRB.Param.MIPFocus, 3)
-    # Spend 30min in parameter Tuning
-    # model.setParam(GRB.Param.TimeLimit, 1800)
+        if not empty_class:
+            model.addConstr(expr <= 1, name="constr_{}".format(i))
+    print "finished building model, solving..."
     # Read in the parameter
     model.read("tune_param.prm")
     model.update()
-    model.write('poolsearch.lp')
-
     model.optimize()
     print "Done Solving, checking solutions"
     shop_list = np.array([name[i] for i in index if x[i].X > 0.9])
@@ -89,8 +85,8 @@ def solve(P, M, N, C, items, constraints, filename):
         Problem = True
         # sys.exit(1)
     write_output('instance_output2/' + filename + '.out', shop_list)
-    model.write(filename+".mst")
-    model.write(filename+".sol")
+    model.write(filename+".mps")
+
     return shop_list, Problem
 
 
@@ -145,7 +141,7 @@ if __name__ == "__main__":
 
     print "Loading Input Files"
     problems = []
-    for fi in [7]:
+    for fi in [20]:
 
         input_file, output_file = 'project_instances/problem{}.in'.format(fi+1), 'instance_output2/problem{}.out'.format(fi+1)
         P, M, N, C, items, constraints = read_input(input_file)
