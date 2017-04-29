@@ -12,7 +12,7 @@ import argparse
 ===============================================================================
 """
 
-def solve(P, M, N, C, items, constraints):
+def solve(P, M, N, C, items, constraints, filename):
     """
     Write your amazing algorithm here.
     Return: a list of strings, corresponding to item names.
@@ -64,9 +64,7 @@ def solve(P, M, N, C, items, constraints):
         model.addConstr(expr <= 1, name="constr_{}".format(i))
 
 
-    model.setParam(GRB.Param.MIPFocus, 3)
-    model.setParam(GRB.Param.TimeLimit, 3600)
-    model.write('poolsearch.lp')
+    model.read("tune0.prm")
     model.optimize()
     print "Done Solving, checking solutions"
     shop_list = np.array([name[i] for i in index if x[i].X > 0.9])
@@ -83,6 +81,9 @@ def solve(P, M, N, C, items, constraints):
         print('Optimization was stopped with status ' + str(status))
         Problem = True
         # sys.exit(1)
+    write_output('instance_output2/' + filename + '.out', shop_list)
+    model.write(filename+".mst")
+    model.write(filename+".sol")
     return shop_list, Problem
 
 
@@ -135,7 +136,7 @@ if __name__ == "__main__":
         input_file, output_file = 'project_instances/problem{}.in'.format(fi+1), 'instance_output2/problem{}.out'.format(fi+1)
         P, M, N, C, items, constraints = read_input(input_file)
         print "Start Solving..."
-        items_chosen, problem = solve(P, M, N, C, items, constraints)
+        items_chosen, problem = solve(P, M, N, C, items, constraints, "problem{}".format(fi+1))
         problems.append(problem)
         print "Finished Solving, Write to file."
         write_output(output_file, items_chosen)
