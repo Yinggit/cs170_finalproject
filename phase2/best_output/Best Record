@@ -16,8 +16,8 @@ problem15.in: 125856923.8	        ->2
 problem16.in: 4349657419.98	        ->2
 problem17.in: 4454006761.62	        ->1
 problem18.in: 30449888.11	        ->2
-problem19.in: 1749962.84	        ->1
-problem20.in: 41096666.46	        ->1
+problem19.in: 1749962.84	        ->1	gap 94.6912%
+problem20.in: 43648413.71	        ->2	gap 0.8086%
 problem21.in: 219762.61		        ->1
 
 
