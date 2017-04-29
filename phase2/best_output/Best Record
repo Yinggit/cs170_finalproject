@@ -1,13 +1,13 @@
-problem1.in: 78609047.86            ->2
-problem2.in: 2007478756.63          ->2
+problem1.in: 78609047.86            	->2
+problem2.in: 2007478756.63          	->2
 problem3.in: 618911222.32	        ->2
 problem4.in: 80508.55		        ->2
-problem5.in: 7.32712730472e+11	    ->1
+problem5.in: 7.32712730472e+11	    	->1
 problem6.in: 111441.73		        ->1
-problem7.in: 10373742848.0	        ->2      *optimal*
-problem8.in: 40168904.45	        ->2
-problem9.in: 10842012711.0	        ->1
-problem10.in: 1077902.25	        ->2
+problem7.in: 10373742848.0	        ->2	*optimal*
+problem8.in: 40168904.45	        ->2	*optimal*
+problem9.in: 15160731425.0	        ->1
+problem10.in: 1077902.25	        ->2	*optimal*
 problem11.in: 32061991.37	        ->2
 problem12.in: 4316164011.13	        ->2
 problem13.in: 74798807.85	        ->2
@@ -24,4 +24,4 @@ problem21.in: 219762.61		        ->1
 mac 1-7 tested
 linux 10-18 tested
 
-Problem 5, 6, , 9
+Problem 5, 6 , 9
