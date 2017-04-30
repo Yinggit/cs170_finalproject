@@ -46,8 +46,8 @@ def solve(P, M, N, C, items, constraints, filename):
     model = Model("Resale_Solver")
     x = model.addVars(index, vtype=GRB.BINARY, name='list')
     rep = model.addVars(class_num, vtype=GRB.INTEGER, name='indicator')
-    model.ModelSense = GRB.MAXIMIZE
-    model.setObjective(x.prod(resale_dict) + M - x.prod(cost_dict))
+    model.ModelSense = GRB.MINIMIZE
+    model.setObjective(-(x.prod(resale_dict) + M - x.prod(cost_dict)) + quicksum(rep))
     model.addConstr(x.prod(cost_dict) <= M, name='cost')
     model.addConstr(x.prod(weight_dict) <= P, name='weight')
 
