@@ -64,10 +64,10 @@ if __name__ == "__main__":
     # parser.add_argument("file_name", type=str, help="____.in")
     # args = parser.parse_args()
     generated = 0
-    while generated < 3:
+    while generated < 5:
         prob = generate_prob()
-        result = write_prob(prob, "sample_problem{}.in".format(generated))
-        file_size = os.path.getsize("sample_problem{}.in".format(generated)) >> 10
+        result = write_prob(prob, "simple_prob/problem{}.in".format(generated))
+        file_size = os.path.getsize("simple_prob/problem{}.in".format(generated)) >> 10
         print "file size: {}KB".format(file_size)
         # if 3500 <= file_size < 4000:
         generated += 1

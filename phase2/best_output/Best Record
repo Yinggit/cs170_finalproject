@@ -3,7 +3,7 @@ problem2.in: 2007478756.63          	->2
 problem3.in: 618911222.32	        ->2
 problem4.in: 80757.04		        ->2	gap 20.2101%
 problem5.in: 7.32712730472e+11	    	->1
-problem6.in: 111441.73		        ->1
+problem6.in: 111441.73		        ->1 	gap 0.0910%
 problem7.in: 10373742848.0	        ->2	*optimal*
 problem8.in: 40168904.45	        ->2	*optimal*
 problem9.in: 15160731425.0	        ->1
@@ -19,4 +19,3 @@ problem18.in: 30449888.11	        ->2	gap 15.7100%
 problem19.in: 1749962.84	        ->1	gap 93.0973%
 problem20.in: 43648413.71	        ->2	gap 0.8086%
 problem21.in: 766393.06		        ->2	gap 1.2868%
-
