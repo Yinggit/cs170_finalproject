@@ -12,16 +12,11 @@ problem11.in: 32102893.8	        ->2	gap 3.2804%
 problem12.in: 4316164011.13	        ->2	gap 1.56%
 problem13.in: 74798807.85	        ->2	presolve not finished by 2hr
 problem14.in: 3207546.99	        ->1	presolve not finished by 2hr
-problem15.in: 125856923.8	        ->2
-problem16.in: 4349657419.98	        ->2
-problem17.in: 4454006761.62	        ->1
-problem18.in: 30449888.11	        ->2
-problem19.in: 1749962.84	        ->1	gap 94.6912%
+problem15.in: 125856923.8	        ->2	gap 1.0057%
+problem16.in: 4350028871.97	        ->2	gap 0.3262%
+problem17.in: 4454006761.62	        ->1	presolve not finished by 2hr
+problem18.in: 30449888.11	        ->2	gap 15.7100%
+problem19.in: 1749962.84	        ->1	gap 93.0973%
 problem20.in: 43648413.71	        ->2	gap 0.8086%
 problem21.in: 219762.61		        ->1
 
-
-mac 1-7 tested
-linux 10-18 tested
-
-Problem 5, 6 , 9
