@@ -42,31 +42,41 @@ def solve(P, M, N, C, items, constraints, filename):
     resale_dict = dict(zip(index, r))
     class_num = list(class_num)
 
-    print "Build up models"
-    model = Model("Resale_Solver")
-    x = model.addVars(index, vtype=GRB.BINARY, name='list')
-    rep = model.addVars(class_num, vtype=GRB.INTEGER, name='indicator')
-    model.ModelSense = GRB.MINIMIZE
-    model.setObjective(-(x.prod(resale_dict) + M - x.prod(cost_dict)) + quicksum(rep))
-    model.addConstr(x.prod(cost_dict) <= M, name='cost')
-    model.addConstr(x.prod(weight_dict) <= P, name='weight')
 
-    for clas in class_num:
-        for item in class_bin[clas]:
-            model.addConstr(rep[clas] >= x[item], name='rep({},{})'.format(clas, item))
+    try:
+        print "try to read from files"
+        model = read('problem_log/'+filename+".mps")
+        model.read('problem_log/'+filename+".mst")
+    except:
+        print "Build up models"
+        model = Model("Resale_Solver")
+        print "failed to read from file, generating model"
+        x = model.addVars(index, vtype=GRB.BINARY, name='list')
+        rep = model.addVars(class_num, vtype=GRB.INTEGER, name='indicator')
+        model.ModelSense = GRB.MINIMIZE
+        model.setObjective(-(x.prod(resale_dict) + M - x.prod(cost_dict)) + quicksum(rep))
+        model.addConstr(x.prod(cost_dict) <= M, name='cost')
+        model.addConstr(x.prod(weight_dict) <= P, name='weight')
 
-    for i in range(C):
-        constr, expr = constraints[i], 0
-        empty_class = True
-        for clas in constr:
-            if clas in class_num:
-                empty_class = False
-                expr += rep[clas]
-        if not empty_class:
-            model.addConstr(expr <= 1, name="constr_{}".format(i))
+        for clas in class_num:
+            for item in class_bin[clas]:
+                model.addConstr(rep[clas] >= x[item], name='rep({},{})'.format(clas, item))
+
+        for i in range(C):
+            constr, expr = constraints[i], 0
+            empty_class = True
+            for clas in constr:
+                if clas in class_num:
+                    empty_class = False
+                    expr += rep[clas]
+            if not empty_class:
+                model.addConstr(expr <= 1, name="constr_{}".format(i))
+
     print "finished building model, solving..."
     # Read in the parameter
     model.read("tune_param.prm")
+
+    import ipdb; ipdb.set_trace()
     model.update()
     model.optimize()
     print "Done Solving, checking solutions"
@@ -90,6 +100,7 @@ def solve(P, M, N, C, items, constraints, filename):
     model.write('problem_log/'+filename+".mst")
 
     return shop_list, Problem
+
 
 
 def tune(model):
@@ -143,7 +154,7 @@ if __name__ == "__main__":
 
     print "Loading Input Files"
     problems = []
-    for fi in [0,1,2,3,4,5,8]:
+    for fi in [16]:
 
         input_file, output_file = 'project_instances/problem{}.in'.format(fi+1), 'instance_output2/problem{}.out'.format(fi+1)
         P, M, N, C, items, constraints = read_input(input_file)

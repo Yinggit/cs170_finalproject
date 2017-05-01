@@ -1,5 +1,5 @@
 # Solution for model Resale_Solver
-# Objective value = 1.7222683700000001e+06
+# Objective value = -8.8027807999999996e+05
 list[0] 0
 list[1] 0
 list[2] 0
@@ -13228,15 +13228,15 @@ list[13224] 0
 list[13225] 0
 list[13226] 0
 list[13227] 0
-list[13228] 0
+list[13228] 1
 list[13229] 0
-list[13230] 0
+list[13230] 1
 list[13231] 0
-list[13232] 0
+list[13232] 1
 list[13233] 0
 list[13234] 0
 list[13235] 0
-list[13236] 0
+list[13236] 1
 list[13237] 0
 list[13238] 0
 list[13239] 0
@@ -13249,8 +13249,8 @@ list[13245] 0
 list[13246] 0
 list[13247] 0
 list[13248] 0
-list[13249] 0
-list[13250] 0
+list[13249] 1
+list[13250] 1
 list[13251] 0
 list[13252] 0
 list[13253] 0
@@ -13258,7 +13258,7 @@ list[13254] 0
 list[13255] 0
 list[13256] 0
 list[13257] 0
-list[13258] 0
+list[13258] 1
 list[13259] 0
 list[13260] 0
 list[13261] 0
@@ -13267,17 +13267,17 @@ list[13263] 0
 list[13264] 0
 list[13265] 0
 list[13266] 0
-list[13267] 0
+list[13267] 1
 list[13268] 0
 list[13269] 0
 list[13270] 0
 list[13271] 0
 list[13272] 0
-list[13273] 0
+list[13273] 1
 list[13274] 0
 list[13275] 0
-list[13276] 0
-list[13277] 0
+list[13276] 1
+list[13277] 1
 list[13278] 0
 list[13279] 0
 list[13280] 0
@@ -13289,9 +13289,9 @@ list[13285] 0
 list[13286] 0
 list[13287] 0
 list[13288] 0
-list[13289] 0
+list[13289] 1
 list[13290] 0
-list[13291] 0
+list[13291] 1
 list[13292] 0
 list[13293] 0
 list[13294] 0
@@ -17274,7 +17274,7 @@ list[17270] 0
 list[17271] 0
 list[17272] 0
 list[17273] 1
-list[17274] 0
+list[17274] 1
 list[17275] 0
 list[17276] 1
 list[17277] 0
@@ -17302,11 +17302,11 @@ list[17298] 0
 list[17299] 0
 list[17300] 0
 list[17301] 0
-list[17302] 0
+list[17302] 1
 list[17303] 0
 list[17304] 0
 list[17305] 0
-list[17306] 0
+list[17306] 1
 list[17307] 0
 list[17308] 0
 list[17309] 0
@@ -30278,7 +30278,7 @@ list[30274] 0
 list[30275] 0
 list[30276] 0
 list[30277] 0
-list[30278] 0
+list[30278] 1
 list[30279] 1
 list[30280] 1
 list[30281] 0
@@ -32935,7 +32935,7 @@ list[32931] 0
 list[32932] 0
 list[32933] 0
 list[32934] 0
-list[32935] 1
+list[32935] 0
 list[32936] 0
 list[32937] 0
 list[32938] 0
@@ -42209,15 +42209,15 @@ list[42205] 0
 list[42206] 0
 list[42207] 0
 list[42208] 0
-list[42209] 0
+list[42209] 1
 list[42210] 0
 list[42211] 0
 list[42212] 0
 list[42213] 0
 list[42214] 0
 list[42215] 0
-list[42216] 0
-list[42217] 0
+list[42216] 1
+list[42217] 1
 list[42218] 0
 list[42219] 0
 list[42220] 0
@@ -42236,8 +42236,8 @@ list[42232] 0
 list[42233] 0
 list[42234] 0
 list[42235] 0
-list[42236] 0
-list[42237] 0
+list[42236] 1
+list[42237] 1
 list[42238] 0
 list[42239] 0
 list[42240] 0
@@ -42247,7 +42247,7 @@ list[42243] 0
 list[42244] 0
 list[42245] 0
 list[42246] 0
-list[42247] 0
+list[42247] 1
 list[42248] 0
 list[42249] 0
 list[42250] 0
@@ -42268,13 +42268,13 @@ list[42264] 0
 list[42265] 0
 list[42266] 0
 list[42267] 0
-list[42268] 0
+list[42268] 1
 list[42269] 0
 list[42270] 0
 list[42271] 0
 list[42272] 0
 list[42273] 0
-list[42274] 0
+list[42274] 1
 list[42275] 0
 list[42276] 0
 list[42277] 0
@@ -42291,7 +42291,7 @@ list[42287] 0
 list[42288] 0
 list[42289] 0
 list[42290] 0
-list[42291] 0
+list[42291] 1
 list[42292] 0
 list[42293] 0
 list[42294] 0
@@ -51856,7 +51856,7 @@ list[51852] 0
 list[51853] 0
 list[51854] 0
 list[51855] 1
-list[51856] 1
+list[51856] 0
 list[51857] 0
 list[51858] 0
 list[51859] 0
@@ -51883,7 +51883,7 @@ list[51879] 0
 list[51880] 0
 list[51881] 1
 list[51882] 0
-list[51883] 1
+list[51883] 0
 list[51884] 0
 list[51885] 1
 list[51886] 0
@@ -51892,7 +51892,7 @@ list[51888] 1
 list[51889] 0
 list[51890] 0
 list[51891] 0
-list[51892] 1
+list[51892] 0
 list[51893] 0
 list[51894] 1
 list[51895] 0
@@ -51902,7 +51902,7 @@ list[51898] 0
 list[51899] 0
 list[51900] 0
 list[51901] 0
-list[51902] 1
+list[51902] 0
 list[51903] 0
 list[51904] 1
 list[51905] 1
@@ -65947,7 +65947,7 @@ list[65943] 0
 list[65944] 0
 list[65945] 1
 list[65946] 0
-list[65947] 0
+list[65947] 1
 list[65948] 1
 list[65949] 0
 list[65950] 1
@@ -65994,7 +65994,7 @@ list[65990] 0
 list[65991] 0
 list[65992] 1
 list[65993] 1
-list[65994] 1
+list[65994] 0
 list[65995] 0
 list[65996] 0
 list[65997] 0
@@ -73727,7 +73727,7 @@ list[73723] 0
 list[73724] 0
 list[73725] 0
 list[73726] 0
-list[73727] 0
+list[73727] 1
 list[73728] 1
 list[73729] 0
 list[73730] 0
@@ -73792,7 +73792,7 @@ list[73788] 0
 list[73789] 0
 list[73790] 0
 list[73791] 1
-list[73792] 1
+list[73792] 0
 list[73793] 0
 list[73794] 0
 list[73795] 0
@@ -80228,7 +80228,7 @@ indicator[225] 0
 indicator[226] 0
 indicator[227] 0
 indicator[228] 0
-indicator[229] 0
+indicator[229] 1
 indicator[230] 0
 indicator[231] 0
 indicator[232] 0
@@ -80730,7 +80730,7 @@ indicator[727] 0
 indicator[728] 0
 indicator[729] 0
 indicator[730] 0
-indicator[731] 0
+indicator[731] 1
 indicator[732] 0
 indicator[733] 0
 indicator[734] 0
