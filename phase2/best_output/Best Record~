@@ -16,6 +16,6 @@ problem15.in: 125856923.8	        ->2	gap 1.0057%
 problem16.in: 4350028871.97	        ->2	gap 0.3262%
 problem17.in: 4454006761.62	        ->1	presolve not finished by 2hr
 problem18.in: 30449888.11	        ->2	gap 15.7100%
-problem19.in: 1803039.08	        ->2	gap 170.7557%
+problem19.in: 1803039.08	        ->2	gap 93.0973%
 problem20.in: 43648413.71	        ->2	gap 0.8086%
 problem21.in: 766393.06		        ->2	gap 1.2868%
