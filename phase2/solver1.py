@@ -118,8 +118,8 @@ if __name__ == "__main__":
     # args = parser.parse_args()
     # input_file, output_file = args.input_file, args.output_file
     print "Loading Input Files"
-    for fi in range(21):
-        input_file, output_file = 'project_instances/problem{}.in'.format(fi+1), 'instance_output1/problem{}.out'.format(fi+1)
+    for fi in range(230, 249):
+        input_file, output_file = 'new_problems/problem{}.in'.format(fi+1), 'instance_output1/problem{}.out'.format(fi+1)
         P, M, N, C, items, constraints = read_input(input_file)
         print "Start Solving..."
         items_chosen = solve(P, M, N, C, items, constraints)
