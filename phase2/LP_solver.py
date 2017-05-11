@@ -92,9 +92,9 @@ def solve(P, M, N, C, items, constraints, filename):
         Problem = True
         # sys.exit(1)
     write_output('instance_output2/' + filename + '.out', shop_list)
-    model.write('problem_log/'+filename+".mps")
-    model.write('problem_log/'+filename+".sol")
-    model.write('problem_log/'+filename+".mst")
+    # model.write('problem_log/'+filename+".mps")
+    # model.write('problem_log/'+filename+".sol")
+    # model.write('problem_log/'+filename+".mst")
 
     return shop_list, Problem
 
@@ -151,7 +151,7 @@ if __name__ == "__main__":
 
     print "Loading Input Files"
     problems = []
-    for fi in range(799, 900):
+    for fi in range(499, 600):
 
         input_file, output_file = 'project_instances_extracredit/problem{}.in'.format(fi+1), 'EC/problem{}.out'.format(fi+1)
         P, M, N, C, items, constraints = read_input(input_file)
